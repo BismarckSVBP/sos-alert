@@ -1,6 +1,8 @@
 import { Toaster } from "@/components/ui/toaster.jsx";
 import { Toaster as Sonner } from "@/components/ui/sonner.jsx";
 import { TooltipProvider } from "@/components/ui/tooltip.jsx";
+import LoadingSpinner from "@/components/ui/LoadingSpinner.jsx";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -74,9 +76,7 @@ const App = () => {
 
   if (isCheckingAuth) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        Checking authentication...
-      </div>
+       <LoadingSpinner/>
     );
   }
 
