@@ -47,7 +47,7 @@ const Index = () => {
                 most.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/signup">
+                <Link to="/dashboard">
                   <Button
                     size="lg"
                     className="bg-red-600 hover:bg-red-700 text-lg px-8 py-3"
@@ -270,7 +270,7 @@ const Index = () => {
               preparedness.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/signup">
+              <Link to="/dashboard">
                 <Button
                   size="lg"
                   variant="secondary"
