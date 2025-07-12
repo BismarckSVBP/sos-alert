@@ -273,7 +273,7 @@ const Contact = () => {
               >
                 Open SOS Alert App
               </Button>
-              </Link>
+              
             </div>
           </div>
         </section>
