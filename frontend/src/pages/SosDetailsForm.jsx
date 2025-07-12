@@ -42,7 +42,7 @@ const SosDetailsForm = () => {
       fullName: user?.name || "",
       age: "",
       bloodType: "",
-      medicalConditions: isAuthenticated || "",
+      medicalConditions:  "",
       allergies: "",
       medications: "",
       emergencyMedicalInfo: "",
