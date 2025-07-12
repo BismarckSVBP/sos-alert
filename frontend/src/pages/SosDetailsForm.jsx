@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -45,7 +42,7 @@ const SosDetailsForm = () => {
       fullName: user?.name || "",
       age: "",
       bloodType: "",
-      medicalConditions:  "",
+      medicalConditions: "",
       allergies: "",
       medications: "",
       emergencyMedicalInfo: "",
@@ -403,16 +400,17 @@ const SosDetailsForm = () => {
                       Phone Number
                     </label>
                     <Input
-                        type="tel"
-                        value={formData.mobile}
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                          setFormData((prev) => ({ ...prev, mobile: val }));
-                        }}
-                        placeholder="Enter your 10-digit mobile number"
-                        required
-                      />
-
+                      type="tel"
+                      value={formData.mobile}
+                      onChange={(e) => {
+                        const val = e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 10);
+                        setFormData((prev) => ({ ...prev, mobile: val }));
+                      }}
+                      placeholder="Enter your 10-digit mobile number"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -470,24 +468,23 @@ const SosDetailsForm = () => {
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Blood Type
                     </label>
-                   <select
-                        value={formData.personalInfo.bloodType}
-                        onChange={(e) =>
-                          handlePersonalInfoChange("bloodType", e.target.value)
-                        }
-                        className="w-full rounded-md border px-3 py-2 text-sm bg-background text-foreground border-input"
-                      >
-                        <option value="">Select Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                      </select>
-
+                    <select
+                      value={formData.personalInfo.bloodType}
+                      onChange={(e) =>
+                        handlePersonalInfoChange("bloodType", e.target.value)
+                      }
+                      className="w-full rounded-md border px-3 py-2 text-sm bg-background text-foreground border-input"
+                    >
+                      <option value="">Select Blood Group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                    </select>
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -562,6 +559,7 @@ const SosDetailsForm = () => {
                   Emergency Contacts
                 </CardTitle>
               </CardHeader>
+
               <CardContent className="space-y-6">
                 {formData.emergencyContacts.map((contact, index) => (
                   <div
@@ -628,16 +626,18 @@ const SosDetailsForm = () => {
                           Phone Number {index === 0 ? "*" : ""}
                         </label>
                         <Input
-                            type="tel"
-                            value={contact.phone}
-                            onChange={(e) => {
-                              const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                              handleContactChange(index, "phone", val);
-                            }}
-                            placeholder="+1 (555) 123-4567"
-                            required={index === 0}
-                          />
-
+                          type="tel"
+                          value={contact.phone}
+                          onChange={(e) => {
+                            const val = e.target.value
+                              .replace(/\D/g, "")
+                              .slice(0, 10);
+                            handleContactChange(index, "phone", val);
+                          }}
+                          placeholder="+1 (555) 123-4567"
+                          required={index === 0}
+                        />
+                      </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">
                           Email Address
