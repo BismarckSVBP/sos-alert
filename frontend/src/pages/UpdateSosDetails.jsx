@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Phone, MapPin, Camera, Save } from "lucide-react";
@@ -387,6 +389,8 @@ const UpdateSosDetails = (props) => {
                       required
                     />
                   </div>
+
+                  
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Email Address
