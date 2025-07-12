@@ -111,7 +111,7 @@ const StartLocationSharing = () => {
           timestamp: Date.now(),
         });
 
-        if (!isSharing) {
+        if (!isSharing && !initialFixDone) {
           setIsSharing(true);
           setViewers(Math.floor(Math.random() * 3) + 1);
           toast({ title: "Live location sharing started." });
