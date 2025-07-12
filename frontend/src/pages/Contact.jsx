@@ -259,17 +259,20 @@ const Contact = () => {
               Call emergency services immediately or use the SOS Alert app.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg">
-                Call 112 Now
-              </Button>
-              <Link to="/signup">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-red-600"
-                >
-                  Open SOS Alert App
+              <a href="tel:112">
+                <Button variant="secondary" size="lg">
+                  Call 112 Now
                 </Button>
+              </a>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-red-600"
+                onClick={() => navigate("/dashboard")}
+              >
+                Open SOS Alert App
+              </Button>
               </Link>
             </div>
           </div>
