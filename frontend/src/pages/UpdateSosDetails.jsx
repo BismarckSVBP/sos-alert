@@ -214,33 +214,33 @@ const UpdateSosDetails = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const contactEmails = formData.emergencyContacts
-        .map((c) => c.email?.trim())
-        .filter(Boolean);
-    
-      const allEmails = [formData.email.trim(), ...contactEmails];
-      const emailSet = new Set(allEmails);
-      if (emailSet.size !== allEmails.length) {
-        return toast({
-          variant: "destructive",
-          title: "Duplicate Emails Found",
-          description: "Primary and emergency contact emails must be unique.",
-        });
-      }
-    
-      // Check for duplicate phone numbers
-      const contactPhones = formData.emergencyContacts
-        .map((c) => c.phone?.trim())
-        .filter(Boolean);
-      const allPhones = [formData.mobile.trim(), ...contactPhones];
-      const phoneSet = new Set(allPhones);
-      if (phoneSet.size !== allPhones.length) {
-        return toast({
-          variant: "destructive",
-          title: "Duplicate Phone Numbers",
-          description: "Primary and emergency contact numbers must be unique.",
-        });
-      }
+    const contactEmails = formData.emergencyContacts
+      .map((c) => c.email?.trim())
+      .filter(Boolean);
+
+    const allEmails = [formData.email.trim(), ...contactEmails];
+    const emailSet = new Set(allEmails);
+    if (emailSet.size !== allEmails.length) {
+      return toast({
+        variant: "destructive",
+        title: "Duplicate Emails Found",
+        description: "Primary and emergency contact emails must be unique.",
+      });
+    }
+
+    // Check for duplicate phone numbers
+    const contactPhones = formData.emergencyContacts
+      .map((c) => c.phone?.trim())
+      .filter(Boolean);
+    const allPhones = [formData.mobile.trim(), ...contactPhones];
+    const phoneSet = new Set(allPhones);
+    if (phoneSet.size !== allPhones.length) {
+      return toast({
+        variant: "destructive",
+        title: "Duplicate Phone Numbers",
+        description: "Primary and emergency contact numbers must be unique.",
+      });
+    }
 
     if (!dob) {
       toast({
@@ -401,6 +401,7 @@ const UpdateSosDetails = (props) => {
                         }))
                       }
                       placeholder="contact@example.com"
+                      disabled
                       required
                     />
                   </div>
@@ -412,16 +413,17 @@ const UpdateSosDetails = (props) => {
                       Phone Number
                     </label>
                     <Input
-                        type="tel"
-                        value={formData.mobile}
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                          setFormData((prev) => ({ ...prev, mobile: val }));
-                        }}
-                        placeholder="Enter your 10-digit mobile number"
-                        required
-                      />
-
+                      type="tel"
+                      value={formData.mobile}
+                      onChange={(e) => {
+                        const val = e.target.value
+                          .replace(/\D/g, "")
+                          .slice(0, 10);
+                        setFormData((prev) => ({ ...prev, mobile: val }));
+                      }}
+                      placeholder="Enter your 10-digit mobile number"
+                      required
+                    />
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -496,7 +498,6 @@ const UpdateSosDetails = (props) => {
                       <option value="AB+">AB+</option>
                       <option value="AB-">AB-</option>
                     </select>
-
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -637,16 +638,17 @@ const UpdateSosDetails = (props) => {
                           Phone Number {index === 0 ? "*" : ""}
                         </label>
                         <Input
-                            type="tel"
-                            value={contact.phone}
-                            onChange={(e) => {
-                              const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                              handleContactChange(index, "phone", val);
-                            }}
-                            placeholder="Enter 10-digit mobile number"
-                            required={index === 0}
-                          />
-
+                          type="tel"
+                          value={contact.phone}
+                          onChange={(e) => {
+                            const val = e.target.value
+                              .replace(/\D/g, "")
+                              .slice(0, 10);
+                            handleContactChange(index, "phone", val);
+                          }}
+                          placeholder="Enter 10-digit mobile number"
+                          required={index === 0}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">
