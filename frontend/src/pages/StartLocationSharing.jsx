@@ -366,7 +366,7 @@ const StartLocationSharing = () => {
           hasStartedSharingRef.current = true;
           setIsSharing(true);
           setViewers(Math.floor(Math.random() * 3) + 1);
-          toast({ title: "Live location sharing started." });
+          toast({ title: "Live l sharing started." });
         }
 
         startWatchLocation();
