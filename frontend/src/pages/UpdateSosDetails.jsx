@@ -214,6 +214,33 @@ const UpdateSosDetails = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+      const contactEmails = formData.emergencyContacts
+        .map((c) => c.email?.trim())
+        .filter(Boolean);
+    
+      const allEmails = [formData.email.trim(), ...contactEmails];
+      const emailSet = new Set(allEmails);
+      if (emailSet.size !== allEmails.length) {
+        return toast({
+          variant: "destructive",
+          title: "Duplicate Emails Found",
+          description: "Primary and emergency contact emails must be unique.",
+        });
+      }
+    
+      // Check for duplicate phone numbers
+      const contactPhones = formData.emergencyContacts
+        .map((c) => c.phone?.trim())
+        .filter(Boolean);
+      const allPhones = [formData.mobile.trim(), ...contactPhones];
+      const phoneSet = new Set(allPhones);
+      if (phoneSet.size !== allPhones.length) {
+        return toast({
+          variant: "destructive",
+          title: "Duplicate Phone Numbers",
+          description: "Primary and emergency contact numbers must be unique.",
+        });
+      }
 
     if (!dob) {
       toast({
@@ -356,6 +383,7 @@ const UpdateSosDetails = (props) => {
                         handlePersonalInfoChange("fullName", e.target.value)
                       }
                       placeholder="Enter your full name"
+                      disabled
                       required
                     />
                   </div>
@@ -384,17 +412,16 @@ const UpdateSosDetails = (props) => {
                       Phone Number
                     </label>
                     <Input
-                      type="tel"
-                      value={formData.mobile}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          mobile: e.target.value,
-                        }))
-                      }
-                      placeholder="Enter your 10-digit mobile number"
-                      required
-                    />
+                        type="tel"
+                        value={formData.mobile}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                          setFormData((prev) => ({ ...prev, mobile: val }));
+                        }}
+                        placeholder="Enter your 10-digit mobile number"
+                        required
+                      />
+
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -452,13 +479,24 @@ const UpdateSosDetails = (props) => {
                     <label className="text-sm font-medium text-foreground mb-2 block">
                       Blood Type
                     </label>
-                    <Input
+                    <select
                       value={formData.personalInfo.bloodType}
                       onChange={(e) =>
                         handlePersonalInfoChange("bloodType", e.target.value)
                       }
-                      placeholder="e.g., O+, A-, B+"
-                    />
+                      className="w-full rounded-md border px-3 py-2 text-sm bg-background text-foreground border-input"
+                    >
+                      <option value="">Select Blood Group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                    </select>
+
                   </div>
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -599,14 +637,16 @@ const UpdateSosDetails = (props) => {
                           Phone Number {index === 0 ? "*" : ""}
                         </label>
                         <Input
-                          type="tel"
-                          value={contact.phone}
-                          onChange={(e) =>
-                            handleContactChange(index, "phone", e.target.value)
-                          }
-                          placeholder="+1 (555) 123-4567"
-                          required={index === 0}
-                        />
+                            type="tel"
+                            value={contact.phone}
+                            onChange={(e) => {
+                              const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                              handleContactChange(index, "phone", val);
+                            }}
+                            placeholder="Enter 10-digit mobile number"
+                            required={index === 0}
+                          />
+
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">
