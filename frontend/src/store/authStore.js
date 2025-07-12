@@ -102,14 +102,33 @@ export const useAuthStore = create(
           throw error;
         }
       },
+      // logout: async () => {
+      //   try {
+      //     await axios.post(`${API_BASE_URL}/api/auth/logout`);
+
+      //     // ✅ Reset Zustand + clear localStorage
+      //     useAuthStore.persist.clearStorage();
+      //     window.location.href = "/login";
+      //     console.log("logoynn");
+      //   } catch (error) {
+      //     console.error("Logout error:", error);
+      //     throw error;
+      //   }
+      // },
       logout: async () => {
         try {
           await axios.post(`${API_BASE_URL}/api/auth/logout`);
-
-          // ✅ Reset Zustand + clear localStorage
+      
+          // ✅ Reset in-memory Zustand state
+          set({
+            user: null,
+            isAuthenticated: false,
+            error: null,
+            message: null,
+          });
+      
+          // ✅ Clear localStorage
           useAuthStore.persist.clearStorage();
-          window.location.href = "/login";
-          console.log("logoynn");
         } catch (error) {
           console.error("Logout error:", error);
           throw error;
