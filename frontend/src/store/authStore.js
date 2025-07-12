@@ -119,21 +119,26 @@ export const useAuthStore = create(
         try {
           await axios.post(`${API_BASE_URL}/api/auth/logout`);
       
-          // ✅ Reset in-memory Zustand state
           set({
             user: null,
             isAuthenticated: false,
+            userEmail: null,
             error: null,
+            isLoading: false,
             message: null,
           });
       
-          // ✅ Clear localStorage
-          useAuthStore.persist.clearStorage();
+          localStorage.removeItem("auth-store");
+          sessionStorage.clear();
+      
+          window.location.replace("/login");
         } catch (error) {
           console.error("Logout error:", error);
           throw error;
         }
       },
+
+
 
       checkAuth: async () => {
         set({ isCheckingAuth: true, error: null });
