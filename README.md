@@ -2,9 +2,7 @@
 
 SOS Alert is a **MERN stack** emergency response web application that enables users to **instantly share live video, audio, and location** with trusted contacts and emergency responders. Built with **WebRTC**, **Socket.IO**, and **Google Maps API**, it ensures reliable real-time communication in critical situations.
 
-🚀 **Live Demo:** [SOS Alert](https://sos-alert.vercel.app/)  
-📂 **GitHub Repository:** [View on GitHub](https://github.com/your-username/sos-alert)
-
+🚀 **Live Demo:** [SOS Alert](https://sos-alert-beta.vercel.app)  
 ---
 
 ## 🔹 Features
