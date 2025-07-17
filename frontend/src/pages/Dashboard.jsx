@@ -283,7 +283,7 @@ const Dashboard = () => {
                       Complete your emergency profile to ensure quick response
                       in critical situations.
                     </p>
-                    <Link to="/sos-details-form">
+                    <Link to="/sos-details">
                       <Button className="bg-red-600 hover:bg-red-700">
                         Complete Profile
                       </Button>
