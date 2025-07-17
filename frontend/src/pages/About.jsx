@@ -127,7 +127,7 @@ const About = () => {
 
                         <div className="flex space-x-3">
                           <a
-                            href={dev.social.github}
+                            href={dev.social.linkedin}
                             className="text-muted-foreground hover:text-foreground transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"
