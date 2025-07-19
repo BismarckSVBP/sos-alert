@@ -11,12 +11,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card.jsx";
-
+import { useToast } from "@/hooks/use-toast.js";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useContactStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast"; // Required for `toast.success()` and `toast.error()`
+//import toast from "react-hot-toast"; // Required for `toast.success()` and `toast.error()`
 import { Link } from "react-router-dom";
 
 const Contact = () => {
