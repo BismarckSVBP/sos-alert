@@ -254,7 +254,7 @@ const Dashboard = () => {
                         {sosDetails.emergencyContacts[0]?.name || "Not set"}
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        {sosDetails.emergencyContacts[0]?.phone || "No phone"}
+                        {sosDetails.emergencyContacts[0]?.email || "No Email"}
                       </p>
                     </div>
                     <div>
