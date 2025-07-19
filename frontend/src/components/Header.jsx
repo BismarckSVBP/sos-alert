@@ -35,6 +35,12 @@ const Header = () => {
       });
     }
   };
+  const admin = () => {
+    const isAdmin =
+      user?.email?.trim().toLowerCase() === ADMIN_EMAIL.trim().toLowerCase();
+
+    return isAdmin;
+  };
   // console.log("hbhbh", sosDetails);
   // useEffect(() => {
   //   if (!user?.email) return;
@@ -69,6 +75,8 @@ const Header = () => {
           
         ]
       : []),
+    ...(admin() ? [{ to: "/admin-panel", label: "Admin" }] : []),
+
   ];
 
   return (
