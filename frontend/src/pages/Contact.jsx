@@ -25,7 +25,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
+const { toast } = useToast();
   const navigate = useNavigate();
   const { contactUs, isLoading } = useContactStore();
 
