@@ -1878,37 +1878,42 @@ const AdminPanel = () => {
               <CardTitle>User Management</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col gap-4 mb-6 md:flex-row">{/* responsive change: column mobile, row on md+ */}
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    placeholder="Search users by name or email..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10"
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    onClick={() => exportAllUsersPDF(filteredUsers, setIsLoading)}
-                    disabled={isLoading}
-                    className="bg-red-600 hover:bg-red-700"
-                  >
-                    {isLoading ? (
-                      "Generating..."
-                    ) : (
-                      <>
-                        <FileText className="h-4 w-4 mr-2" />
-                        Export PDF
-                      </>
-                    )}
-                  </Button>
-                  <Button onClick={exportToCSV} variant="outline">
-                    <Download className="h-4 w-4 mr-2" />
-                    Export CSV
-                  </Button>
-                </div>
-              </div>
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-6"> {/* responsive change: make column on mobile, row on sm+ */}
+                 <div className="flex-1 relative order-2 sm:order-1">        {/* responsive change: move search below buttons on mobile */}
+                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                   <Input
+                     placeholder="Search users by name or email..."
+                     value={searchTerm}
+                     onChange={(e) => setSearchTerm(e.target.value)}
+                     className="pl-10"
+                   />
+                 </div>
+                 <div className="flex flex-col sm:flex-row gap-2 flex-none order-1 sm:order-2 w-full sm:w-auto"> {/* responsive change: buttons in column on mobile */}
+                   <Button
+                     onClick={() => exportAllUsersPDF(filteredUsers, setIsLoading)}
+                     disabled={isLoading}
+                     className="bg-red-600 hover:bg-red-700 w-full sm:w-auto"              // responsive change: w-full on mobile
+                   >
+                     {isLoading ? (
+                       "Generating..."
+                     ) : (
+                       <>
+                         <FileText className="h-4 w-4 mr-2" />
+                         Export PDF
+                       </>
+                     )}
+                   </Button>
+                   <Button
+                     onClick={exportToCSV}
+                     variant="outline"
+                     className="w-full sm:w-auto"                                          // responsive change: w-full on mobile
+                   >
+                     <Download className="h-4 w-4 mr-2" />
+                     Export CSV
+                   </Button>
+                 </div>
+               </div>
+
               {/* User Table */}
               <div className="w-full overflow-x-auto">{/* responsive change: keep overflow for small screens */}
                 <table className="w-full border-collapse min-w-[600px]">{/* responsive change: ensure min-width */}
