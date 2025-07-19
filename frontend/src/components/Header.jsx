@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button.jsx";
 import ThemeToggle from "./ThemeToggle";
 import { useToast } from "@/hooks/use-toast.js";
 import axios from "axios";
-import { API_BASE_URL } from "@/config";
+import { API_BASE_URL,ADMIN_EMAIL } from "@/config";
 import { useAuthStore } from "../store/authStore";
 
 const Header = () => {
