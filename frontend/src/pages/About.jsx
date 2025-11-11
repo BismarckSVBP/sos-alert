@@ -52,6 +52,9 @@ const About = () => {
     },
   ];
 
+
+  //for check
+
   const stats = [
     { icon: Users, label: "Active Users", value: "10,000+" },
     { icon: Shield, label: "Emergencies Handled", value: "500+" },
