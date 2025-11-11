@@ -92,11 +92,11 @@ const Footer = () => {
             </a>
 
             <a
-              href="mailto:helpsosalert@gmail.com"
+              href="mailto:workingindianguy@gmail.com"
               className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <Mail className="h-4 w-4 text-red-600" />
-              <span>helpsosalert@gmail.com</span>
+              <span>workingindianguy@gmail.com</span>
             </a>
 
             <div className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default">
