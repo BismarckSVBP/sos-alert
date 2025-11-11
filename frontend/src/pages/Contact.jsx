@@ -340,7 +340,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "helpsosalert@gmail.com",
+      content: "workingindianguy@gmail.com",
       description: "Send us an email anytime",
     },
     {
